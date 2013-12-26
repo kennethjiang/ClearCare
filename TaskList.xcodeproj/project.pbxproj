@@ -16,6 +16,8 @@
 		9F411074185E1D72009EE479 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F411073185E1D72009EE479 /* Security.framework */; };
 		9F411076185E1D7B009EE479 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F411075185E1D7B009EE479 /* StoreKit.framework */; };
 		9F411078185E1D88009EE479 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F411077185E1D88009EE479 /* SystemConfiguration.framework */; };
+		9F60582F186B313200746B33 /* TLLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F60582E186B313200746B33 /* TLLoginVC.m */; };
+		9F605834186B343F00746B33 /* profile-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F605833186B343F00746B33 /* profile-avatar.jpg */; };
 		9FCEDEF7184FDF670044AEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCEDEF6184FDF670044AEC4 /* Foundation.framework */; };
 		9FCEDEF9184FDF670044AEC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCEDEF8184FDF670044AEC4 /* CoreGraphics.framework */; };
 		9FCEDEFB184FDF670044AEC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCEDEFA184FDF670044AEC4 /* UIKit.framework */; };
@@ -56,6 +58,9 @@
 		9F411073185E1D72009EE479 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9F411075185E1D7B009EE479 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9F411077185E1D88009EE479 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9F60582D186B313200746B33 /* TLLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLLoginVC.h; sourceTree = "<group>"; };
+		9F60582E186B313200746B33 /* TLLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLLoginVC.m; sourceTree = "<group>"; };
+		9F605833186B343F00746B33 /* profile-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-avatar.jpg"; sourceTree = "<group>"; };
 		9FCEDEF3184FDF670044AEC4 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCEDEF6184FDF670044AEC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FCEDEF8184FDF670044AEC4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,9 +123,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F605830186B33C100746B33 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9F605833186B343F00746B33 /* profile-avatar.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		9FCEDEEA184FDF670044AEC4 = {
 			isa = PBXGroup;
 			children = (
+				9F605830186B33C100746B33 /* Images */,
 				9FCEDEFC184FDF670044AEC4 /* TaskList */,
 				9FCEDF1B184FDF670044AEC4 /* TaskListTests */,
 				9FCEDEF5184FDF670044AEC4 /* Frameworks */,
@@ -172,6 +186,8 @@
 				9FCEDF0E184FDF670044AEC4 /* Images.xcassets */,
 				9FCEDF2D184FFBE70044AEC4 /* TLMapVC.h */,
 				9FCEDF2E184FFBE70044AEC4 /* TLMapVC.m */,
+				9F60582D186B313200746B33 /* TLLoginVC.h */,
+				9F60582E186B313200746B33 /* TLLoginVC.m */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -284,6 +300,7 @@
 			files = (
 				9FCEDF0F184FDF670044AEC4 /* Images.xcassets in Resources */,
 				9FCEDF01184FDF670044AEC4 /* InfoPlist.strings in Resources */,
+				9F605834186B343F00746B33 /* profile-avatar.jpg in Resources */,
 				9FCEDF0A184FDF670044AEC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +324,7 @@
 				9FCEDF07184FDF670044AEC4 /* TLAppDelegate.m in Sources */,
 				9FCEDF03184FDF670044AEC4 /* main.m in Sources */,
 				9FCEDF2F184FFBE70044AEC4 /* TLMapVC.m in Sources */,
+				9F60582F186B313200746B33 /* TLLoginVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
