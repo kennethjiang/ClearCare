@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TLMainListVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TLMainListVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tasklistTableView;
 @property (strong, nonatomic) IBOutlet UILabel *timeElapsedLabel;
