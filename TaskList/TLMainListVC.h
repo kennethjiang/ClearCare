@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TLMainListVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
+@interface TLMainListVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tasklistTableView;
-@property (strong, nonatomic) IBOutlet UILabel *timeElapsedLabel;
-
-- (IBAction)contactDONBtnTapped:(id)sender;
 
 @end

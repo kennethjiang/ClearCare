@@ -37,6 +37,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listBtnTapped:)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
+    
     
     _taskList = [NSMutableArray arrayWithArray: [NSArray arrayWithObjects:
                                                  @"Complete/partial bath",
@@ -72,6 +77,8 @@
     _transitioningToNextTask = NO;
     _allTasksDone = NO;
     _allQuestionsDone = NO;
+    
+    self.picture.hidden = YES;
     
     _taskDesc.text = [_taskList objectAtIndex:_currentIdx];
     _taskDesc.font = [UIFont boldSystemFontOfSize:24.0];
@@ -111,6 +118,11 @@
                                   destructiveButtonTitle:nil
                                   otherButtonTitles:@"Call", @"Text", nil];
     [actionSheet showInView:self.view];
+}
+
+- (void)listBtnTapped:(id)sender
+{
+    [self performSegueWithIdentifier:@"toMainList" sender:self];
 }
 
 - (IBAction)confirmBtnTapped:(id)sender
@@ -162,6 +174,18 @@
     {
         _taskDesc.text = [_taskList objectAtIndex:++_currentIdx];
 
+        if (_currentIdx == 2) {
+            self.picture.hidden = NO;
+            [self.picture setImage:[UIImage imageNamed:@"timans-itchy-rash.jpg"]];
+        }
+        else if (_currentIdx == 6) {
+            self.picture.hidden = NO;
+            [self.picture setImage:[UIImage imageNamed:@"Frostbitten_hands.jpg"]];
+        }
+        else {
+            self.picture.hidden = YES;
+        }
+        
         if (_currentIdx >= (_taskList.count - 1))
         {
             _allTasksDone = YES;

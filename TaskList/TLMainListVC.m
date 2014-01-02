@@ -20,48 +20,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Master list";
     
     UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
     gesture.direction = UISwipeGestureRecognizerDirectionRight;
     [self.tasklistTableView addGestureRecognizer:gesture];
     
-    _recipes = [NSMutableArray arrayWithArray: [NSArray arrayWithObjects:@"Prepare fresh nutritious meals", @"Remind to stay hydrated", @"Observe dietary special needs", @"Vacuum and dust", @"Clean kitchen", @"Clean and sanitize bathrooms", @"Organize closets and cabinets", @"Change the linen", @"Laundry: Wash, dry, fold, put away", @"Assistance with bath or shower", @"Feeding", @"Oral Care: Teeth brushing, denture care", @"Hair washing, drying, combing and brushing", @"Make-up application", @"Nail care", @"Toileting: bedside commode or bathroom", nil]];
-    
+    _recipes = [NSMutableArray arrayWithArray: [NSArray arrayWithObjects:
+                                                @"Complete/partial bath",
+                                                @"Dress/undress",
+                                                @"Assist with toileting",
+                                                @"Transferring",
+                                                @"Personal grooming",
+                                                @"Assist with eating/feeding",
+                                                @"Ambulation",
+                                                @"Turn/Change position",
+                                                @"Vital Signs",
+                                                @"Assist with self-administration medication",
+                                                @"Bowel/bladder",
+                                                @"Wound care",
+                                                @"ROM",
+                                                @"Supervision",
+                                                @"Prepare breakfast",
+                                                @"Prepare lunch",
+                                                @"Prepare dinner",
+                                                @"Clean kitchen/wash dishes",
+                                                @"Make/change bed linen",
+                                                @"Clean areas used by individual",
+                                                @"Listing supplies/shopping",
+                                                @"Did you observe any change in the individual's physical condition?",
+                                                @"Did you observe any change in the individual's emotional condition?",
+                                                @"Was there any change in the individual's regular daily activities?",
+                                                @"Do you have an observation about the individual's response to services rendered?",
+                                                nil]];
     _startTime = [NSDate timeIntervalSinceReferenceDate];
-    [self updateTime];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)updateTime
-{
-    NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
-    NSTimeInterval elapsed = currentTime - _startTime;
-    
-    int hours = (int) (elapsed/3600.0);
-    elapsed -= 3600.0 * hours;
-    int mins = (int) (elapsed/60.0);
-    elapsed -= 60.0 * mins;
-    int secs = (int) (elapsed);
-    
-    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%02u:%02u:%02u", hours, mins, secs];
-    
-    [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
-}
-
-- (void)contactDONBtnTapped:(id)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  initWithTitle:nil
-                                  delegate:self
-                                  cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:nil
-                                  otherButtonTitles:@"Call", @"Text", nil];
-    [actionSheet showInView:self.view];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -84,7 +82,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    float level = (100+10*indexPath.row)/255.0;
+    float level = (100+20*(indexPath.row % 2))/255.0;
     cell.backgroundColor = [UIColor colorWithRed:level green:level blue:level alpha:1.0];
     cell.textLabel.text = [_recipes objectAtIndex:indexPath.row];
     return cell;

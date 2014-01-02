@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *negativeBtn;
 @property (strong, nonatomic) IBOutlet UIButton *positiveBtn;
 @property (strong, nonatomic) IBOutlet UILabel *comments;
+@property (strong, nonatomic) IBOutlet UIImageView *picture;
 
 - (void) cancelAddComments;
 - (void) confirmAddComments:(NSString *)comments;
