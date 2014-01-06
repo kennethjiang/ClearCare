@@ -201,8 +201,8 @@
 				9FCEDF0E184FDF670044AEC4 /* Images.xcassets */,
 				9FCEDF2D184FFBE70044AEC4 /* TLMapVC.h */,
 				9FCEDF2E184FFBE70044AEC4 /* TLMapVC.m */,
-				9F60582D186B313200746B33 /* TLLoginVC.h */,
 				9F60582E186B313200746B33 /* TLLoginVC.m */,
+				9F60582D186B313200746B33 /* TLLoginVC.h */,
 				9F605835186CC9BE00746B33 /* TLTaskReminderVC.h */,
 				9F605836186CC9BE00746B33 /* TLTaskReminderVC.m */,
 				9F60583A186CE1F500746B33 /* TLAddCommentsVC.h */,
@@ -492,6 +492,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/kenneth/Projects/ClearCare,

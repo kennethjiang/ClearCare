@@ -10,13 +10,11 @@
 #import "TLAddCommentsVC.h"
 
 @interface TLTaskReminderVC () {
-    NSMutableArray *_taskList;
-    NSMutableArray *_questionList;
+    NSArray *_taskList;
     NSTimeInterval _startTime;
+    PFObject *_logEntry;
 
     int _currentIdx;
-    BOOL _allTasksDone;
-    BOOL _allQuestionsDone;
     BOOL _transitioningToNextTask;
 }
 
@@ -42,49 +40,33 @@
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listBtnTapped:)];
     self.navigationItem.rightBarButtonItem = anotherButton;
     
-    
-    _taskList = [NSMutableArray arrayWithArray: [NSArray arrayWithObjects:
-                                                 @"Complete/partial bath",
-                                                 @"Dress/undress",
-                                                 @"Assist with toileting",
-                                                 @"Transferring",
-                                                 @"Personal grooming",
-                                                 @"Assist with eating/feeding",
-                                                 @"Ambulation",
-                                                 @"Turn/Change position",
-                                                 @"Vital Signs",
-                                                 @"Assist with self-administration medication",
-                                                 @"Bowel/bladder",
-                                                 @"Wound care",
-                                                 @"ROM",
-                                                 @"Supervision",
-                                                 @"Prepare breakfast",
-                                                 @"Prepare lunch",
-                                                 @"Prepare dinner",
-                                                 @"Clean kitchen/wash dishes",
-                                                 @"Make/change bed linen",
-                                                 @"Clean areas used by individual",
-                                                 @"Listing supplies/shopping",
-                                                 nil]];
-    _questionList = [NSMutableArray arrayWithArray: [NSArray arrayWithObjects:
-        @"Did you observe any change in the individual's physical condition?",
-        @"Did you observe any change in the individual's emotional condition?",
-        @"Was there any change in the individual's regular daily activities?",
-        @"Do you have an observation about the individual's response to services rendered?",
-        nil]];
-    
-    _currentIdx = 0;
-    _transitioningToNextTask = NO;
-    _allTasksDone = NO;
-    _allQuestionsDone = NO;
-    
-    self.picture.hidden = YES;
-    
-    _taskDesc.text = [_taskList objectAtIndex:_currentIdx];
-    _taskDesc.font = [UIFont boldSystemFontOfSize:24.0];
-    _taskDesc.textAlignment = NSTextAlignmentCenter;
     _startTime = [NSDate timeIntervalSinceReferenceDate];
     [self updateTime];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query whereKey:@"assigned" equalTo:@"T"];
+    [query orderByAscending:@"position"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
+        if (!error) {
+            [self taskListRefreshed:tasks];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+- (void) taskListRefreshed:(NSArray *)tasks {
+    _taskList = tasks;
+    
+    _currentIdx = -1;
+    _transitioningToNextTask = NO;
+    _logEntry = nil;
+    
+    [self nextTask];
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,20 +109,28 @@
 
 - (IBAction)confirmBtnTapped:(id)sender
 {
+    PFObject *task = [_taskList objectAtIndex:_currentIdx];
+    _logEntry[@"status"] = ([task[@"isQuestion"] isEqualToString:@"T"])? @"No" : @"Confirmed";
     [self nextTask];
 }
 
 - (IBAction)rejectBtnTapped:(id)sender
 {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    TLAddCommentsVC *vc = (TLAddCommentsVC *) [sb instantiateViewControllerWithIdentifier:@"addCommentsVC"];
-    vc.parentVC = self;
-    vc.isMandatory = YES;
-    vc.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-    [self presentViewController:vc animated:YES completion:NULL];
+    PFObject *task = [_taskList objectAtIndex:_currentIdx];
+    _logEntry[@"status"] = ([task[@"isQuestion"] isEqualToString:@"T"])? @"Yes" : @"Rejected";
     
-    _transitioningToNextTask = YES;
-    
+    if (_logEntry[@"comments"]) {
+        [self nextTask];
+    } else {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TLAddCommentsVC *vc = (TLAddCommentsVC *) [sb instantiateViewControllerWithIdentifier:@"addCommentsVC"];
+        vc.parentVC = self;
+        vc.isMandatory = YES;
+        vc.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+        [self presentViewController:vc animated:YES completion:NULL];
+        
+        _transitioningToNextTask = YES;
+    }
 }
 
 
@@ -162,6 +152,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     self.comments.text = comments;
+    _logEntry[@"comments"] = comments;
     
     if (_transitioningToNextTask)
         [self nextTask];
@@ -170,48 +161,44 @@
 
 - (void) nextTask
 {
-    if (! _allTasksDone)
-    {
-        _taskDesc.text = [_taskList objectAtIndex:++_currentIdx];
 
-        if (_currentIdx == 2) {
+    if (_logEntry) {
+        [_logEntry saveInBackground];
+    }
+    
+    if (++_currentIdx < _taskList.count) {
+        PFObject *task = [_taskList objectAtIndex:_currentIdx];
+        _taskDesc.text = task[@"desc"];
+
+        if (task[@"pic"]) {
             self.picture.hidden = NO;
-            [self.picture setImage:[UIImage imageNamed:@"timans-itchy-rash.jpg"]];
-        }
-        else if (_currentIdx == 6) {
-            self.picture.hidden = NO;
-            [self.picture setImage:[UIImage imageNamed:@"Frostbitten_hands.jpg"]];
+            PFFile *picFile = task[@"pic"];
+            [picFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    [self.picture setImage:[UIImage imageWithData:imageData]];
+                }
+            }];
         }
         else {
             self.picture.hidden = YES;
         }
         
-        if (_currentIdx >= (_taskList.count - 1))
-        {
-            _allTasksDone = YES;
-            _currentIdx = -1;
-        }
-    }
-    else if (! _allQuestionsDone) //Task list is over. We are at questions now
-    {
-        if (_currentIdx == -1) {
+        if ([task[@"isQuestion"] isEqualToString:@"T"]) {
             [self.negativeBtn setTitle:@"Yes" forState:UIControlStateNormal];
             [self.positiveBtn setTitle:@"No" forState:UIControlStateNormal];
+        } else {
+            [self.negativeBtn setTitle:@"Reject" forState:UIControlStateNormal];
+            [self.positiveBtn setTitle:@"Confirm" forState:UIControlStateNormal];
         }
-        _taskDesc.text = [_questionList objectAtIndex:++_currentIdx];
-        if (_currentIdx >= (_questionList.count -1))
-        {
-            _allQuestionsDone = YES;
-        }
-    }
-    else
-    {
         
+        _taskDesc.font = [UIFont boldSystemFontOfSize:24.0];
+        _taskDesc.textAlignment = NSTextAlignmentCenter;
+        _comments.text = @"No comments";
+        _transitioningToNextTask = NO;
+    
+        _logEntry = [PFObject objectWithClassName:@"LogEntry"];
+        _logEntry[@"desc"] = [_taskList objectAtIndex:_currentIdx][@"desc"];
     }
-    _taskDesc.font = [UIFont boldSystemFontOfSize:24.0];
-    _taskDesc.textAlignment = NSTextAlignmentCenter;
-    _comments.text = @"No comments";
-    _transitioningToNextTask = NO;
 }
 
 @end
