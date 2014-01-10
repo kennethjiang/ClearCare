@@ -35,7 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"screenBackground.png"]];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:135/255.0 green:177/255.0 blue:187/255.0 alpha:1.0];
     
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listBtnTapped:)];
     self.navigationItem.rightBarButtonItem = anotherButton;
@@ -86,7 +87,7 @@
     elapsed -= 60.0 * mins;
     int secs = (int) (elapsed);
     
-    self.timeElapsedLabel.text = [NSString stringWithFormat:@"%02u:%02u:%02u", hours, mins, secs];
+    self.title = [NSString stringWithFormat:@"%02u:%02u:%02u", hours, mins, secs];
     
     [self performSelector:@selector(updateTime) withObject:self afterDelay:1.0];
 }

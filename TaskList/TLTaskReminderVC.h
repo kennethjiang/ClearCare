@@ -10,7 +10,6 @@
 
 @interface TLTaskReminderVC : UIViewController <UIActionSheetDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *timeElapsedLabel;
 @property (strong, nonatomic) IBOutlet UITextView *taskDesc;
 @property (strong, nonatomic) IBOutlet UIButton *negativeBtn;
 @property (strong, nonatomic) IBOutlet UIButton *positiveBtn;

@@ -35,6 +35,7 @@
 		9F605837186CC9BE00746B33 /* TLTaskReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F605836186CC9BE00746B33 /* TLTaskReminderVC.m */; };
 		9F605839186CDDF800746B33 /* behind_alert_view.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F605838186CDDF800746B33 /* behind_alert_view.png */; };
 		9F60583C186CE1F500746B33 /* TLAddCommentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F60583B186CE1F500746B33 /* TLAddCommentsVC.m */; };
+		9FB1DD44188065AD00494758 /* mainInnerWhiteBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB1DD43188065AD00494758 /* mainInnerWhiteBackground@2x.png */; };
 		9FCEDEF7184FDF670044AEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCEDEF6184FDF670044AEC4 /* Foundation.framework */; };
 		9FCEDEF9184FDF670044AEC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCEDEF8184FDF670044AEC4 /* CoreGraphics.framework */; };
 		9FCEDEFB184FDF670044AEC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCEDEFA184FDF670044AEC4 /* UIKit.framework */; };
@@ -97,6 +98,7 @@
 		9F605838186CDDF800746B33 /* behind_alert_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = behind_alert_view.png; sourceTree = "<group>"; };
 		9F60583A186CE1F500746B33 /* TLAddCommentsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAddCommentsVC.h; sourceTree = "<group>"; };
 		9F60583B186CE1F500746B33 /* TLAddCommentsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAddCommentsVC.m; sourceTree = "<group>"; };
+		9FB1DD43188065AD00494758 /* mainInnerWhiteBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainInnerWhiteBackground@2x.png"; sourceTree = "<group>"; };
 		9FCEDEF3184FDF670044AEC4 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCEDEF6184FDF670044AEC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FCEDEF8184FDF670044AEC4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -162,6 +164,7 @@
 		9F605830186B33C100746B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9FB1DD43188065AD00494758 /* mainInnerWhiteBackground@2x.png */,
 				9F1395C7187FEE5A004EFA59 /* button-Go-selected@2x.png */,
 				9F1395C8187FEE5A004EFA59 /* button-Go-unselected@2x.png */,
 				9F1395C9187FEE5A004EFA59 /* commentBackground@2x.png */,
@@ -359,6 +362,7 @@
 				9F1395D3187FEE5A004EFA59 /* button-Go-selected@2x.png in Resources */,
 				9F1395D5187FEE5A004EFA59 /* commentBackground@2x.png in Resources */,
 				9F1395DB187FEE5A004EFA59 /* innerWhiteBackground@2x.png in Resources */,
+				9FB1DD44188065AD00494758 /* mainInnerWhiteBackground@2x.png in Resources */,
 				9F1395DC187FEE5A004EFA59 /* button-Start-selected@2x.png in Resources */,
 				9F1395D4187FEE5A004EFA59 /* button-Go-unselected@2x.png in Resources */,
 				9F1395DA187FEE5A004EFA59 /* innerDestinationBackground@2x.png in Resources */,
