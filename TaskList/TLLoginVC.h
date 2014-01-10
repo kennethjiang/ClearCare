@@ -10,4 +10,6 @@
 
 @interface TLLoginVC : UIViewController
 
+-(IBAction)loginBtnTapped:(id)sender;
+
 @end

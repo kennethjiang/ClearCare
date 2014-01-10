@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"screenBackground.png"]];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +36,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)loginBtnTapped:(id)sender
+{
+    PFObject *logEntry = [PFObject objectWithClassName:@"LogEntry"];
+    logEntry[@"desc"] = @"Checked in";
+    [logEntry saveInBackground];
+}
 @end
