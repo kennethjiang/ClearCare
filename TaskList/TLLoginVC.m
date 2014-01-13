@@ -7,6 +7,7 @@
 //
 
 #import "TLLoginVC.h"
+#import "TLTaskReminderVC.h"
 
 @interface TLLoginVC ()
 
@@ -41,5 +42,14 @@
     PFObject *logEntry = [PFObject objectWithClassName:@"LogEntry"];
     logEntry[@"desc"] = @"Checked in";
     [logEntry saveInBackground];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"LoginToReminderVC"])
+	{
+		TLTaskReminderVC *vc = segue.destinationViewController;
+        [vc refreshTaskList];
+	}
 }
 @end

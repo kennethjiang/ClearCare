@@ -18,6 +18,7 @@
 
 - (void) cancelAddComments;
 - (void) confirmAddComments:(NSString *)comments;
+- (void) refreshTaskList;
 
 - (IBAction)contactDONBtnTapped:(id)sender;
 - (IBAction)confirmBtnTapped:(id)sender;

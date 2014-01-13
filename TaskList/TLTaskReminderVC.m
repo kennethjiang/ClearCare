@@ -46,7 +46,8 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)refreshTaskList
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query whereKey:@"assigned" equalTo:@"T"];
     [query orderByAscending:@"position"];
@@ -127,7 +128,7 @@
         TLAddCommentsVC *vc = (TLAddCommentsVC *) [sb instantiateViewControllerWithIdentifier:@"addCommentsVC"];
         vc.parentVC = self;
         vc.isMandatory = YES;
-        vc.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentViewController:vc animated:YES completion:NULL];
         
         _transitioningToNextTask = YES;
@@ -140,7 +141,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     TLAddCommentsVC *vc = (TLAddCommentsVC *) [sb instantiateViewControllerWithIdentifier:@"addCommentsVC"];
     vc.parentVC = self;
-    vc.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:vc animated:YES completion:NULL];
 }
 
