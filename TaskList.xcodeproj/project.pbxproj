@@ -28,8 +28,6 @@
 		9F411074185E1D72009EE479 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F411073185E1D72009EE479 /* Security.framework */; };
 		9F411076185E1D7B009EE479 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F411075185E1D7B009EE479 /* StoreKit.framework */; };
 		9F411078185E1D88009EE479 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F411077185E1D88009EE479 /* SystemConfiguration.framework */; };
-		9F463AFF1871E72C00335443 /* timans-itchy-rash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F463AFE1871E72C00335443 /* timans-itchy-rash.jpg */; };
-		9F463B011871E7C900335443 /* Frostbitten_hands.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F463B001871E7C900335443 /* Frostbitten_hands.jpg */; };
 		9F60582F186B313200746B33 /* TLLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F60582E186B313200746B33 /* TLLoginVC.m */; };
 		9F605834186B343F00746B33 /* profile-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F605833186B343F00746B33 /* profile-avatar.jpg */; };
 		9F605837186CC9BE00746B33 /* TLTaskReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F605836186CC9BE00746B33 /* TLTaskReminderVC.m */; };
@@ -95,8 +93,6 @@
 		9F411073185E1D72009EE479 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9F411075185E1D7B009EE479 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9F411077185E1D88009EE479 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9F463AFE1871E72C00335443 /* timans-itchy-rash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "timans-itchy-rash.jpg"; sourceTree = "<group>"; };
-		9F463B001871E7C900335443 /* Frostbitten_hands.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Frostbitten_hands.jpg; sourceTree = "<group>"; };
 		9F60582D186B313200746B33 /* TLLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLLoginVC.h; sourceTree = "<group>"; };
 		9F60582E186B313200746B33 /* TLLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLLoginVC.m; sourceTree = "<group>"; };
 		9F605833186B343F00746B33 /* profile-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-avatar.jpg"; sourceTree = "<group>"; };
@@ -198,8 +194,6 @@
 				9F1395D0187FEE5A004EFA59 /* button-Start-selected@2x.png */,
 				9F1395D1187FEE5A004EFA59 /* button-Start-unselected@2x.png */,
 				9F1395D2187FEE5A004EFA59 /* screenBackground@2x.png */,
-				9F463B001871E7C900335443 /* Frostbitten_hands.jpg */,
-				9F463AFE1871E72C00335443 /* timans-itchy-rash.jpg */,
 				9F605838186CDDF800746B33 /* behind_alert_view.png */,
 				9F605833186B343F00746B33 /* profile-avatar.jpg */,
 			);
@@ -348,6 +342,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = OpsViz;
 				TargetAttributes = {
+					9FCEDEF2184FDF670044AEC4 = {
+						DevelopmentTeam = 4FA7674A9F;
+					};
 					9FCEDF13184FDF670044AEC4 = {
 						TestTargetID = 9FCEDEF2184FDF670044AEC4;
 					};
@@ -377,7 +374,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F463B011871E7C900335443 /* Frostbitten_hands.jpg in Resources */,
 				9F605839186CDDF800746B33 /* behind_alert_view.png in Resources */,
 				9FCEDF0F184FDF670044AEC4 /* Images.xcassets in Resources */,
 				9FB1DD4D1880810B00494758 /* appicon-120px@2x.png in Resources */,
@@ -394,7 +390,6 @@
 				9F1395DD187FEE5A004EFA59 /* button-Start-unselected@2x.png in Resources */,
 				9FCEDF01184FDF670044AEC4 /* InfoPlist.strings in Resources */,
 				9FB1DD4A1880810B00494758 /* appicon-44px@2x.png in Resources */,
-				9F463AFF1871E72C00335443 /* timans-itchy-rash.jpg in Resources */,
 				9F605834186B343F00746B33 /* profile-avatar.jpg in Resources */,
 				9F1395D8187FEE5A004EFA59 /* button-Confirm-selected@2x.png in Resources */,
 				9F1395D9187FEE5A004EFA59 /* button-Confirm-unselected@2x.png in Resources */,
@@ -555,6 +550,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/kenneth/Projects/ClearCare,
@@ -562,7 +559,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TaskList/TaskList-Prefix.pch";
 				INFOPLIST_FILE = "TaskList/TaskList-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -572,7 +572,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/kenneth/Projects/ClearCare,
@@ -580,7 +581,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TaskList/TaskList-Prefix.pch";
 				INFOPLIST_FILE = "TaskList/TaskList-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

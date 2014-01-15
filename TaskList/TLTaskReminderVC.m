@@ -8,6 +8,7 @@
 
 #import "TLTaskReminderVC.h"
 #import "TLAddCommentsVC.h"
+#import "TLMainListVC.h"
 
 @interface TLTaskReminderVC () {
     NSArray *_taskList;
@@ -107,6 +108,15 @@
 - (void)listBtnTapped:(id)sender
 {
     [self performSegueWithIdentifier:@"toMainList" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toMainList"])
+	{
+		TLMainListVC *vc = segue.destinationViewController;
+        vc.tasks = _taskList;
+	}
 }
 
 - (IBAction)confirmBtnTapped:(id)sender

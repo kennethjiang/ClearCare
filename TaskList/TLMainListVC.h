@@ -10,6 +10,8 @@
 
 @interface TLMainListVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) NSArray *tasks;
+
 @property (strong, nonatomic) IBOutlet UITableView *tasklistTableView;
 
 @end
