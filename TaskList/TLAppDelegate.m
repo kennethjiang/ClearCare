@@ -17,7 +17,7 @@
                   clientKey:@"yTgi344mid0D9oqduIFAE4pOM24mTc1jkzj5ArNu"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    sleep(0.8);
+    sleep(1.2);
     return YES;
 }
 							
