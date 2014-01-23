@@ -178,7 +178,8 @@
         [_logEntry saveInBackground];
     }
     
-    if (++_currentIdx < _taskList.count) {
+    if (_currentIdx < (int) _taskList.count-1) {
+        _currentIdx ++;
         PFObject *task = [_taskList objectAtIndex:_currentIdx];
         _taskDesc.text = task[@"desc"];
 
@@ -211,6 +212,13 @@
         _logEntry = [PFObject objectWithClassName:@"LogEntry"];
         _logEntry[@"desc"] = [_taskList objectAtIndex:_currentIdx][@"desc"];
     }
+    
+    else if (_currentIdx == (int) _taskList.count-1) {
+        PFObject *logEntry = [PFObject objectWithClassName:@"LogEntry"];
+        logEntry[@"desc"] = @"Check-out";
+        [logEntry saveInBackground];
+    }
+
 }
 
 @end

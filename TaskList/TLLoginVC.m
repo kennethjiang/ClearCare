@@ -37,17 +37,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)loginBtnTapped:(id)sender
-{
-    PFObject *logEntry = [PFObject objectWithClassName:@"LogEntry"];
-    logEntry[@"desc"] = @"Checked in";
-    [logEntry saveInBackground];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"LoginToReminderVC"])
 	{
+        PFObject *logEntry = [PFObject objectWithClassName:@"LogEntry"];
+        logEntry[@"desc"] = @"Check-in";
+        [logEntry saveInBackground];
+
 		TLTaskReminderVC *vc = segue.destinationViewController;
         [vc refreshTaskList];
 	}
